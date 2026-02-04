@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quadratic Equation Solver
+
+A modern web application that solves second-degree (quadratic) equations of the form `ax² + bx + c = 0`. Built with Next.js and deployed to GitHub Pages.
+
+## Features
+
+- **Complete Solver**: Handles all standard cases and edge cases:
+  - Two real roots ($\Delta > 0$)
+  - One repeated real root ($\Delta = 0$)
+  - Complex roots ($\Delta < 0$) with clean formatting (e.g., `x = -0.5 ± 1.65i`)
+  - Linear equations handling (when $a=0$)
+- **Architecture**: Separation of concerns with logic isolated in `src/lib/solver.ts` so that i can be unit-testable.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 20+ installed.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd albatros-exercise
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Deployment
+
+This project is configured for **Continuous Deployment** to GitHub Pages via GitHub Actions.
+
+- **Workflow**: The `.github/workflows/deploy.yml` file automates the build and deployment process on every push to the `main` branch.
+- **Static Export**: The project is configured (`output: 'export'` in `next.config.ts`) to generate a static site suitable for standard hosting environments like GitHub Pages.
+
+To build manually:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
+The output will be located in the `out/` directory.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language**: TypeScript
